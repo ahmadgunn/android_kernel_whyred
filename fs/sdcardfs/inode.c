@@ -77,11 +77,11 @@ static int sdcardfs_create(struct inode *dir, struct dentry *dentry,
 	}
 
 	/* save current_cred and override it */
+
 	saved_cred = override_fsids(SDCARDFS_SB(dir->i_sb),
 					SDCARDFS_I(dir)->data);
 	if (!saved_cred)
 		return -ENOMEM;
-
 	sdcardfs_get_lower_path(dentry, &lower_path);
 	lower_dentry = lower_path.dentry;
 	lower_dentry_mnt = lower_path.mnt;
@@ -127,6 +127,10 @@ out_eacces:
 	return err;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 547bbe80b09b... Kernel: Xiaomi kernel changes for Redmi Note5, XiaoMi 6X and Redmi Note 6Pro
 static int sdcardfs_unlink(struct inode *dir, struct dentry *dentry)
 {
 	int err;
@@ -143,11 +147,18 @@ static int sdcardfs_unlink(struct inode *dir, struct dentry *dentry)
 	}
 
 	/* save current_cred and override it */
+<<<<<<< HEAD
 	saved_cred = override_fsids(SDCARDFS_SB(dir->i_sb),
 						SDCARDFS_I(dir)->data);
 	if (!saved_cred)
 		return -ENOMEM;
+=======
+>>>>>>> 547bbe80b09b... Kernel: Xiaomi kernel changes for Redmi Note5, XiaoMi 6X and Redmi Note 6Pro
 
+	saved_cred = override_fsids(SDCARDFS_SB(dir->i_sb),
+						SDCARDFS_I(dir)->data);
+	if (!saved_cred)
+		return -ENOMEM;
 	sdcardfs_get_lower_path(dentry, &lower_path);
 	lower_dentry = lower_path.dentry;
 	lower_mnt = lower_path.mnt;
@@ -310,7 +321,11 @@ static int sdcardfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode
 				&& (qstr_case_eq(&dentry->d_name, &q_data)))) {
 		revert_fsids(saved_cred);
 		saved_cred = override_fsids(sbi,
+<<<<<<< HEAD
 					SDCARDFS_I(d_inode(dentry))->data);
+=======
+					SDCARDFS_I(dentry->d_inode)->data);
+>>>>>>> 547bbe80b09b... Kernel: Xiaomi kernel changes for Redmi Note5, XiaoMi 6X and Redmi Note 6Pro
 		if (!saved_cred) {
 			pr_err("sdcardfs: failed to set up .nomedia in %s: %d\n",
 						lower_path.dentry->d_name.name,
@@ -330,7 +345,10 @@ out:
 	task_lock(current);
 	current->fs = saved_fs;
 	task_unlock(current);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 547bbe80b09b... Kernel: Xiaomi kernel changes for Redmi Note5, XiaoMi 6X and Redmi Note 6Pro
 	free_fs_struct(copied_fs);
 out_unlock:
 	sdcardfs_put_lower_path(dentry, &lower_path);

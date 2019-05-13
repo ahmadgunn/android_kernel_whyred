@@ -1,4 +1,5 @@
-/* Copyright (c) 2012-2019, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2012-2017, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2019 XiaoMi, Inc.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -3409,6 +3410,10 @@ static void __process_sys_error(struct venus_hfi_device *device)
 {
 	struct hfi_sfr_struct *vsfr = NULL;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 547bbe80b09b... Kernel: Xiaomi kernel changes for Redmi Note5, XiaoMi 6X and Redmi Note 6Pro
 	/* Once SYS_ERROR received from HW, it is safe to halt the AXI.
 	 * With SYS_ERROR, Venus FW may have crashed and HW might be
 	 * active and causing unnecessary transactions. Hence it is
@@ -3687,7 +3692,10 @@ static int __response_handler(struct venus_hfi_device *device)
 					"Too many packets in message queue to handle at once, deferring read\n");
 			break;
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 547bbe80b09b... Kernel: Xiaomi kernel changes for Redmi Note5, XiaoMi 6X and Redmi Note 6Pro
 		/* do not read packets after sys error packet */
 		if (info->response_type == HAL_SYS_ERROR)
 			break;
@@ -3752,7 +3760,12 @@ err_no_work:
 	for (i = 0; !IS_ERR_OR_NULL(device->response_pkt) &&
 		i < num_responses; ++i) {
 		struct msm_vidc_cb_info *r = &device->response_pkt[i];
+<<<<<<< HEAD
 		 if (!__core_in_valid_state(device)) {
+=======
+
+		if (!__core_in_valid_state(device)) {
+>>>>>>> 547bbe80b09b... Kernel: Xiaomi kernel changes for Redmi Note5, XiaoMi 6X and Redmi Note 6Pro
 			dprintk(VIDC_ERR,
 				"Ignore responses from %d to %d as device is in invalid state",
 				(i + 1), num_responses);
